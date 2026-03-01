@@ -29,14 +29,17 @@ if(!userData){
   fetchUser()
 }
   },[])
-  return (
+ return (
+  <div className="flex flex-col min-h-screen">
+    <NavBar />
 
-    <div>
-      <NavBar/>
-      <Outlet/>
-      <Footer/>
+    <div className="flex-grow">
+      <Outlet />
     </div>
-  )
+
+    <Footer />
+  </div>
+);
 }
 
 export default Body;

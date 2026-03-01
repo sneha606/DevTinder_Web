@@ -25,8 +25,8 @@ const Login = () => {
     dispatch(addUser(res.data))
     navigate("/Feed")
  }catch(err){
-  setError(err.message)
-  console.log(err)
+  setError(err.response?.data?.message || "Something went wrong")
+  console.log(err.message.data)
  }
   }
 
@@ -37,7 +37,9 @@ const Login = () => {
      return  navigate("/profile")
     }
     catch(err){
-      console.log(err.message)
+      console.log(err)
+      setError(err.response?.data?.message || "Something went wrong" )
+     
     }
   }
 

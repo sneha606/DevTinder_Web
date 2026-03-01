@@ -25,7 +25,7 @@ const Request = () => {
          fetchRequests()
     },[])
  if (!requests) return null;
-  if (requests.length === 0) return <h1>No Requests found</h1>
+  if (requests.length === 0) return <h1 className='text-center mt-20 text-2xl'>No Requests found</h1>
 
   return (
     <div  className="flex justify-center flex-col text-center mb-30">
@@ -35,24 +35,58 @@ const Request = () => {
         const { firstName, lastName, age, gender, skills, photoURL, about } = requests.fromUserId;
 
         return (
-            <div className='flex justify-center'>
-          <div className='flex flex-row bg-base-300 text-left mb-96 w-1/2 ' key={index}>
-            <div>
-              <img src={photoURL} />
-            </div>
-            <div className='ml-40 my-5'>
-              <h1 className='text-xl font-bold my-2'>{firstName + " " + lastName}</h1>
-             {age && gender && <p className='my-2'>{age}, {gender}</p> } 
-              <p>{about}</p>
-              <p>{skills}</p>
-            </div>
-            <div className='flex justify-center items-center mx-6' >
-            <button onClick={()=> reviewRequests("accepted",requests._id)} className="btn btn-soft btn-primary mx-3">Accept</button>
-          <button onClick={()=> reviewRequests("rejected",requests._id)} className="btn btn-soft btn-secondary mx-3">Reject</button>
-          </div>
-          </div>
-           
-          </div>
+          <div className="flex justify-center">
+  <div className="flex items-center bg-base-300 rounded-2xl shadow-md p-6 w-2/3 mb-6">
+
+    {/* Profile Image */}
+    <div className="flex-shrink-0">
+      <img
+        src={photoURL}
+        alt="profile"
+        className="w-28 h-28 object-cover rounded-full border-4 border-base-100"
+      />
+    </div>
+
+    {/* User Info */}
+    <div className="flex-1 mx-8">
+      <h2 className="text-xl font-bold">
+        {firstName} {lastName}
+      </h2>
+
+      {age && gender && (
+        <p className="text-sm text-gray-500 mt-1">
+          {age}, {gender}
+        </p>
+      )}
+
+      <p className="mt-3 text-sm">{about}</p>
+
+      {skills && (
+        <p className="mt-2 text-sm text-gray-600">
+          <span className="font-semibold">Skills:</span> {skills.join(", ")}
+        </p>
+      )}
+    </div>
+
+    {/* Buttons */}
+    <div className="flex flex-col gap-3">
+      <button
+        onClick={() => reviewRequests("accepted", requests._id)}
+        className="btn btn-success btn-sm"
+      >
+        Accept
+      </button>
+
+      <button
+        onClick={() => reviewRequests("rejected", requests._id)}
+        className="btn btn-error btn-sm"
+      >
+        Reject
+      </button>
+    </div>
+
+  </div>
+</div>
         
         )
       })}
