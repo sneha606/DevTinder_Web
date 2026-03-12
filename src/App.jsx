@@ -8,6 +8,7 @@ import appStore from "./utils/appStore"
 import Feed from "./Feed"
 import ConnectionRequest from "./ConnectionRequest"
 import Request from "./Request"
+import Premium from "./Premium"
 function App() {
  
 
@@ -23,6 +24,7 @@ function App() {
         <Route path="/profile" element={<Profile/>}/>
          <Route path="/connections" element={<ConnectionRequest/>}/>
            <Route path="/requests" element={<Request/>}/>
+           <Route path="/premium" element={<Premium/>}/>
         </Route>
     </Routes>
     </BrowserRouter>
