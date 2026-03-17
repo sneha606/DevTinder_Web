@@ -16,6 +16,11 @@ const Premium = () => {
         name: 'DevTinder',
         description: 'Connect with our developers',
         order_id: orderId, 
+
+
+         handler: function (response) {
+      console.log("🔥 PAYMENT SUCCESS", response);
+    },
     
         // prefill: {
         //   name: notes.firstName + " " + notes.lastName,
